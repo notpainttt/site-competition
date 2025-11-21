@@ -1,0 +1,85 @@
+name: CI Checks
+
+on:
+  push:
+    branches: ["template/forkrun"]
+  pull_request:
+
+jobs:
+  checks:
+    name: Run Checks
+    runs-on: ubuntu-latest
+
+    # Optional: strategy for multiple versions (e.g., node, python, java)
+    strategy:
+      matrix:
+        language: [generic]
+        version: [1.0]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --- Setup Language Environment (customize per language) ---
+      # Examples (comment out what you don’t need):
+
+      # Node.js
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+
+      # Python
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12'
+
+      # Java
+      # - uses: actions/setup-java@v4
+      #   with:
+      #     distribution: 'temurin'
+      #     java-version: '21'
+
+      # Go
+      # - uses: actions/setup-go@v5
+      #   with:
+      #     go-version: '1.22'
+
+      # Rust
+      # - uses: dtolnay/rust-toolchain@stable
+
+      # Add your own setup here for any language/toolchain
+      # -----------------------------------------------
+
+      - name: Install dependencies
+        run: |
+          # Add commands relevant to your language
+          # npm install
+          # pip install -r requirements.txt
+          # go mod tidy
+          # cargo build
+          echo "No dependencies to install by default."
+
+      - name: Run Linter
+        run: |
+          # Replace with your project’s lint command
+          echo "Running linter..."
+          # npm run lint
+          # pylint src/
+          # golangci-lint run
+          # cargo clippy
+
+      - name: Run Tests
+        run: |
+          echo "Running tests..."
+          # npm test
+          # pytest -q
+          # go test ./...
+          # cargo test --all
+
+      - name: Build
+        run: |
+          echo "Building project..."
+          # npm run build
+          # go build ./...
+          # cargo build --release
+
