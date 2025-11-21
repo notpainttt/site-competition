@@ -1,0 +1,11 @@
+.section1 {
+    background-color: #FFE7CB ;
+}
+.section2 {
+    background-color: #FFF0DF;
+}
+@media only screen and (max-width: 767px) {
+    .section1 {
+        background-color: white;
+    }
+}
